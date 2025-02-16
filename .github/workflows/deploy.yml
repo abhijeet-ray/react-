@@ -1,0 +1,41 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main  # Adjust if you want a different branch to trigger the deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Change Node version as needed
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Build your project
+      - name: Build
+        run: npm run build
+
+      # Sync the build directory with your S3 bucket
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ reactt01 }}      # Your S3 bucket name
+          AWS_ACCESS_KEY_ID: ${{ AKIAYEKP5HBMMGQI6ENP }}  # Your AWS Access Key ID
+          AWS_SECRET_ACCESS_KEY: ${{ hHuYd3a/CnrzgslazwprSWu6OEsAicrKf3QofE5Y }}  # Your AWS Secret Access Key
+          AWS_REGION: 'ap-south-1'  # Adjust if your bucket is in a different region
+          SOURCE_DIR: './build'   # Path to your build output directory
