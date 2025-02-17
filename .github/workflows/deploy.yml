@@ -35,7 +35,7 @@ jobs:
           args: --acl public-read --delete
         env:
           AWS_S3_BUCKET: ${{ reactt01 }}      # Your S3 bucket name
-          AWS_ACCESS_KEY_ID: ${{ AKIAYEKP5HBMMGQI6ENP }}  # Your AWS Access Key ID
-          AWS_SECRET_ACCESS_KEY: ${{ hHuYd3a/CnrzgslazwprSWu6OEsAicrKf3QofE5Y }}  # Your AWS Secret Access Key
+          AWS_ACCESS_KEY_ID: ${{  }}  # Your AWS Access Key ID
+          AWS_SECRET_ACCESS_KEY: ${{  }}  # Your AWS Secret Access Key
           AWS_REGION: 'ap-south-1'  # Adjust if your bucket is in a different region
           SOURCE_DIR: './build'   # Path to your build output directory
